@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/workbench.iml" filepath="$PROJECT_DIR$/workbench.iml" />
+      <module fileurl="file://$PROJECT_DIR$/workbench-common/workbench-common.iml" filepath="$PROJECT_DIR$/workbench-common/workbench-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/workbench-dao/workbench-dao.iml" filepath="$PROJECT_DIR$/workbench-dao/workbench-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/workbench-service/workbench-service.iml" filepath="$PROJECT_DIR$/workbench-service/workbench-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/workbench-web/workbench-web.iml" filepath="$PROJECT_DIR$/workbench-web/workbench-web.iml" />
+    </modules>
+  </component>
+</project>

@@ -7,6 +7,7 @@
         <module>workbench-dao</module>
         <module>workbench-service</module>
         <module>workbench-common</module>
+        <module>workbench-web</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

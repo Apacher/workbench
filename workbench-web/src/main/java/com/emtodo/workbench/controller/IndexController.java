@@ -18,4 +18,10 @@ public class IndexController {
     public String index(){
         return "connect success!!!";
     }
+
+    @RequestMapping("/workbench/list")
+    public String list(){
+        return "connect success!!!";
+    }
+
 }

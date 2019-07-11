@@ -1,0 +1,45 @@
+server:
+  port: 8088
+
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+  # Druid连接池配置，官方配置参考：https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/sparrow_db?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+      initial-size: 20
+      max-active: 50
+      min-idle: 10
+      max-wait: 10
+      filters: stat,wall
+      filter:
+        stat:
+        log-slow-sql: true
+        slow-sql-millis: 2000
+      #监控配置
+      # Druid WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: "*.gif,*.png,*.jpg,*.html,*.js,*.css,*.ico,/druid/*"
+      # Druid StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: root
+        login-password: root
+        allow:
+        deny:
+
+#日志配置文件设置，不配做spring也会默认去找-spring.*文件
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    com.emtodo.workbench.controller: info

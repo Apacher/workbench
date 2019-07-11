@@ -1,5 +1,6 @@
 package com.emtodo.workbench.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version : V1.0
  */
 @RestController
+@Slf4j
 public class IndexController {
 
     @RequestMapping("/workbench/index")
@@ -21,6 +23,11 @@ public class IndexController {
 
     @RequestMapping("/workbench/list")
     public String list(){
+        log.trace("=====trace log======");
+        log.debug("=====debug log======");
+        log.info("=====info log======");
+        log.warn("=====warn log======");
+        log.error("=====error log======");
         return "connect success!!!";
     }
 

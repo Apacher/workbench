@@ -23,11 +23,6 @@ public class IndexController {
 
     @RequestMapping("/workbench/list")
     public String list(){
-        log.trace("=====trace log======");
-        log.debug("=====debug log======");
-        log.info("=====info log======");
-        log.warn("=====warn log======");
-        log.error("=====error log======");
         return "connect success!!!";
     }
 

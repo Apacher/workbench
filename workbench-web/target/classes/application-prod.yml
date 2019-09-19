@@ -1,0 +1,8 @@
+server:
+  port: 8088
+
+#日志配置文件设置，不配做spring也会默认去找-spring.*文件
+logging:
+  config: classpath:logback-spring.xml
+  level: info
+

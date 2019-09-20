@@ -157,15 +157,15 @@
     </appender>
 
     <!--日志异步到数据库 -->
-    <!--<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">-->
-        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
-            <!--<level>WARN</level>-->
-            <!--<onMatch>ACCEPT</onMatch>-->
-            <!--<onMismatch>DENY</onMismatch>-->
-        <!--</filter>-->
+    <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level> <!--设置存入数据库的日志等级-->
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
         <!--&lt;!&ndash;日志异步到数据库 &ndash;&gt;-->
         <!--<connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">-->
-            <!--&lt;!&ndash;连接池 &ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;连接池 &ndash;&gt;&ndash;&gt;-->
             <!--<dataSource class="com.alibaba.druid.pool.DruidDataSource">-->
                 <!--<url>${logback.db.url}</url>-->
                 <!--<username>${logback.db.username}</username>-->
@@ -173,7 +173,19 @@
                 <!--<driverClassName>${logback.db.driverClassName}</driverClassName>-->
             <!--</dataSource>-->
         <!--</connectionSource>-->
-    <!--</appender>-->
+        <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
+            <dataSource class="com.mchange.v2.c3p0.ComboPooledDataSource">
+                <!--<driverClass>com.mysql.cj.jdbc.Driver</driverClass>-->
+                <!--<jdbcUrl>jdbc:mysql://127.0.0.1:3306/sparrow_db?serverTimezone=UTC</jdbcUrl>-->
+                <!--<user>root</user>-->
+                <!--<password>root</password>-->
+                <driverClass>${logback.db.driverClass}</driverClass>
+                <jdbcUrl>${logback.db.url}</jdbcUrl>
+                <user>${logback.db.username}</user>
+                <password>${logback.db.password}</password>
+            </dataSource>
+        </connectionSource>
+    </appender>
 
     <!-- 打印 sql 配置 -->
     <!--
@@ -183,13 +195,12 @@
     <logger name="java.sql.ResultSet" level="DEBUG"/>
     -->
     <!-- 为 mybatis sql 定制 -->
-    <!--
-    <logger name="com.ibatis" level="DEBUG"/>
-    <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="DEBUG"/>
-    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/>
-    <logger name="org.mybatis.generator" level="DEBUG"/>
-    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG"/>
-    -->
+    <!--<logger name="com.ibatis" level="DEBUG"/>-->
+    <!--<logger name="com.ibatis.common.jdbc.SimpleDataSource" level="DEBUG"/>-->
+    <!--<logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/>-->
+    <!--<logger name="org.mybatis.generator" level="DEBUG"/>-->
+    <!--<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG"/>-->
+
 
     <!-- 为 Hibernate sql 定制 -->
     <!--
@@ -211,7 +222,7 @@
         <appender-ref ref="DEBUG"/>
         <appender-ref ref="TRACE"/>
         <!-- 数据库输出 -->
-        <!--<appender-ref ref="DB"/>-->
+        <appender-ref ref="DB"/>
     </root>
 
 </configuration>

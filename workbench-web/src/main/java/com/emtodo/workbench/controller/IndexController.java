@@ -23,6 +23,18 @@ public class IndexController {
 
     @RequestMapping("/workbench/list")
     public String list(){
+        log.trace("==============trace log=================");
+        log.info("==============info log=================");
+        log.debug("==============debug log=================");
+        log.warn("==============warn log=================");
+        log.error("==============error log=================");
+
+        try {
+            int a = 1/0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            //log.error("异常了,简单错误为"+ExceptionUtil());
+        }
         return "connect success!!!";
     }
 

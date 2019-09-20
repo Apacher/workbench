@@ -42,5 +42,5 @@ spring:
 logging:
   config: classpath:logback-spring.xml
   level:
-    com.emtodo.workbench.controller: error
+    com.emtodo.workbench.controller: info
     root: info

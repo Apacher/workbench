@@ -18,6 +18,8 @@ public class IndexController {
 
     @RequestMapping("/workbench/index")
     public String index(){
+
+        System.out.println("Hello brother!!!!");
         return "connect success!!!";
     }
 
